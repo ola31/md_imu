@@ -296,7 +296,7 @@ void MD_IMU::imu_req(void){
   imu_req_arr[0] = 0x3c;
 
 
-  for(i=1;i<=2;i++){
+  for(i=2;i>=2;i--){
 
     //i=0 : acc
     //i=1 : gyro
@@ -315,6 +315,7 @@ void MD_IMU::imu_req(void){
      imu_write(imu_req_arr);
     }
   }
+  //imu_write(imu_req_arr);  //마지막걸 한번 더
 
 }
 void MD_IMU::imu_read(void){
@@ -326,7 +327,7 @@ void MD_IMU::imu_read(void){
 
   int i=0;
 
-  for(i=0;i<3;i++){
+  for(i=0;i<2;i++){
     imu_can_data = CAN_read();
     if(imu_can_data.data[1]==51){
 
